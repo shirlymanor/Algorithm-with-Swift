@@ -1,0 +1,45 @@
+//print all permutuations of a string
+//for example ab -> ab ba suppose all the letters are uniqe
+// 1. if it's only one letter print it and exit
+
+
+func permutations(n:Int, inout _ a:Array<Character>) {
+    if n == 1 {print(a); return}
+    for i in 0..<n-1 {
+        permutations(n-1,&a)
+        swap(&a[n-1], &a[(n%2 == 1) ? 0 : i])
+    }
+    permutations(n-1,&a)
+}
+
+var arr = Array("ABC".characters)
+permutations(arr.count,&arr)
+print("//////////////")
+func permutations1(n:Int,var a:Array<Character>) {
+    if n == 1 {print(a); return}
+    for i in 0..<n-1 {
+        permutations1(n-1,a: a)
+        print(n%2)
+        ////////0)
+        a[n-1] = a[(n%2 == 1) ? 0 : i]
+    }
+    permutations1(n-1,a: a)
+}
+
+var arr1 = Array("ABC".characters)
+permutations1(arr1.count,a: arr1)
+
+//reverse string
+func reverseStr(s:String)->String
+{
+    var tempArr:Array<Character> = Array(s.characters)
+    var i = s.characters.count-1
+        for c in s.characters
+        {
+        tempArr.removeAtIndex(i)
+        tempArr.insert(c, atIndex: i)
+        i -= 1
+    }
+    return String(tempArr)
+}
+reverseStr("Hello")
