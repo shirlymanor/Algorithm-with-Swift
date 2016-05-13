@@ -1,0 +1,28 @@
+Create power function with swift (without using the func pow)
+
+func power(x:Double,y:Double)->Double
+{
+    if(y==0){
+        return 1.0
+    }
+    var temp:Double = 1.0
+    for _ in 1...Int(y){
+        temp = temp * x
+    }
+    print (temp)
+    if(y < 0){
+        temp =  Double(1) / Double(temp)
+    }
+    
+    return temp
+}
+
+Use recursion
+
+func power2(x:Int,y:Int)->Int{
+    if(y==0){
+        return 1
+    }
+    return x * power2(x,y:y-1)
+}
+power2(3,y:4)
